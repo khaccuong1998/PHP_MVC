@@ -8,6 +8,10 @@
 
         require BASE_PATH . '/core/Core_Controller.php';
         require BASE_PATH . '/core/Base_Controller.php';
+    require BASE_PATH . '/core/Core_Model.php';
+    require BASE_PATH . '/core/Base_Model.php';
+
+
 
 
         $controller = ucfirst($module) . '_Controller';
@@ -27,6 +31,5 @@
             echo "Method $action not exist!";
             exit();
         }
-        $object->$action();
-
-    }
+    $object->$action();
+}
