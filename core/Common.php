@@ -16,13 +16,11 @@
 
         if(!file_exists($controller_path))
         {
-            echo "File $controller_path not exist  !";
-            exit();
+            exit("File $controller_path not exist  !");
         }
         require_once $controller_path;
         if (!class_exists($controller)) {
-            echo "Class not exist ! $controller";
-            exit();
+            exit("Class not exist ! $controller");
         }
         $object = new $controller;
         if (!method_exists($object,$action)) {
