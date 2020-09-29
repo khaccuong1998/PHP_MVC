@@ -1,5 +1,5 @@
 <?php
 return [
-    'helper' => array('url', 'model', 'css'),
+    'helper' => array('url', 'model'),
     'model' => array()
 ];
