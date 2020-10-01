@@ -7,8 +7,8 @@
         $this->model->load('Home', 'home');
     }
 
-        function index(){
-        $this->model->home->find_all();
+    function index()
+    {
             $data = 5;
             $this->view->load('home/index', [
                 'so' => $data

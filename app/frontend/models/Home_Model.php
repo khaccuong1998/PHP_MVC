@@ -1,5 +1,5 @@
 <?php
 
-    class Home_Model extends Base_Model {
-
+class Home_Model extends Base_Model
+{
     }

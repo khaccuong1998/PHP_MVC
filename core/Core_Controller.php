@@ -4,29 +4,27 @@
 
         protected $layout;
         protected $view;
-    protected $model;
-    protected $helper;
+        protected $model;
+        protected $helper;
 
 
 
-        function __construct() {
-            require BASE_PATH . '/core/Loaders/Layout_Loader.php';
+    function __construct()
+    {
 
+        require BASE_PATH . '/core/Loaders/Layout_Loader.php';
             $this->layout = new Layout_Loader;
 
-            require BASE_PATH . '/core/Loaders/View_Loader.php';
-
+        require BASE_PATH . '/core/Loaders/View_Loader.php';
             $this->view = new View_Loader;
 
         require BASE_PATH . '/core/Loaders/Model_Loader.php';
-
-        $this->model = new Model_Loader;
+            $this->model = new Model_Loader;
 
         require BASE_PATH . '/core/Loaders/Helper_Loader.php';
+            $this->helper = new Helper_Loader;
 
-        $this->helper = new Helper_Loader;
-
-        $this->autoload();
+            $this->autoload();
     }
 
     function autoload()
@@ -38,4 +36,4 @@
             }
         }
     }
-    }
+}

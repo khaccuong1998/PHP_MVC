@@ -1,5 +1,4 @@
 <?php
-session_start();
 class User_Controller extends Base_Controller
 {
 
@@ -26,7 +25,7 @@ class User_Controller extends Base_Controller
         $id = $_GET["id"];
         if ($this->model->user->delete($id)) {
             $_SESSION["xoa"] = 1;
-            header("location:" . base_url("user/index"));
+            redirect("user/index");
         }
     }
     function them()
@@ -39,13 +38,18 @@ class User_Controller extends Base_Controller
             $name = $_POST["name"];
             $email = $_POST["email"];
             $data = [$name, $email];
+            if ($this->model->user->check_mail($email)) {
+                $_SESSION["Check_mail"] = 1;
+                redirect("user/them");
+            } else {
             if ($this->model->user->insert($data)) {
                 $_SESSION["them"] = 1;
-                header("location:" . base_url("user/index"));
+                    redirect("user/index");
             } else {
                 echo "Lỗi";
             }
         }
+    }
     }
     function sua()
     {
@@ -54,14 +58,16 @@ class User_Controller extends Base_Controller
         $email = $_POST["email"];
         $ngay_up = date("Y-m-d h:i:s", time());
         $data = [$id, $name, $email, $ngay_up];
-        // echo "<pre>";
-        // var_dump($data);
-        // echo "</pre>";
-        if ($this->model->user->update($data)) {
+        if ($this->model->user->check_mail($email)) {
+            $_SESSION["Check_mail"] = 1;
+            redirect("user/show&id=$id");
+        } else {
+            if ($this->model->user->update($data)) {
             $_SESSION["sua"] = 1;
-            header("location:" . base_url("user/index"));
+                redirect("user/index");
         } else {
             echo "Lỗi";
         }
     }
+}
 }

@@ -1,11 +1,11 @@
 <?php
- if(isset($_SESSION["them"])){
+if (isset($_SESSION["them"])) {
     echo "<h1 style='color:green'>Insert successful</h1>";
 }
-if(isset($_SESSION["xoa"])){
+if (isset($_SESSION["xoa"])) {
     echo "<h1 style='color:red'>Delete successful</h1>";
 }
-if(isset($_SESSION["sua"])){
+if (isset($_SESSION["sua"])) {
     echo "<h1 style='color:blue'>Update successful</h1>";
 }
 session_destroy();
@@ -26,7 +26,9 @@ session_destroy();
             <td><?= $user['email'] ?></td>
             <td><?= $user['created_at'] ?></td>
             <td><a href="<?= base_url("user/show?id={$user['id']}") ?>">Sửa</a></td>
-            <td><a href="<?= base_url("user/xoa?id={$user['id']}") ?>">Xóa</a></td>
+            <td><a href="<?= base_url("user/xoa?id={$user['id']}") ?>"
+                    onclick="return confirm('Bạn có muốn xóa?')">Xóa</a>
+            </td>
         </tr>
         <?php endforeach; ?>
     </tbody>
