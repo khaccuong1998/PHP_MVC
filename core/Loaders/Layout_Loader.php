@@ -20,4 +20,3 @@ class Layout_Loader
 
     }
 }
-?>

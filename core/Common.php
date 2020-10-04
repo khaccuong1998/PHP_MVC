@@ -8,6 +8,10 @@
 
         require BASE_PATH . '/core/Core_Controller.php';
         require BASE_PATH . '/core/Base_Controller.php';
+    require BASE_PATH . '/core/Core_Model.php';
+    require BASE_PATH . '/core/Base_Model.php';
+
+
 
 
         $controller = ucfirst($module) . '_Controller';
@@ -16,19 +20,16 @@
 
         if(!file_exists($controller_path))
         {
-            echo "File $controller_path not exist  !";
-            exit();
+            exit("File $controller_path not exist  !");
         }
         require_once $controller_path;
         if (!class_exists($controller)) {
-            echo "Class not exist ! $controller";
-            exit();
+            exit("Class not exist ! $controller");
         }
         $object = new $controller;
         if (!method_exists($object,$action)) {
             echo "Method $action not exist!";
             exit();
         }
-        $object->$action();
-
-    }
+    $object->$action();
+}
