@@ -31,5 +31,5 @@
             echo "Method $action not exist!";
             exit();
         }
-    $object->$action();
+        $object->$action();
 }
